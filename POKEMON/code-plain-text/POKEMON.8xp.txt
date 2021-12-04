@@ -1,0 +1,214 @@
+ClrHome
+prgmPKMNINIT
+prgmPKMSTART
+
+0→G
+Repeat G
+
+If L₁(1)≠1:Then
+L₁→⌊TEMP
+L₂→L₁
+⌊TEMP→L₂
+End
+
+L₃→⌊MOVE1
+For(I,13,dim(L₁))
+If L₁(I)≥7 and L₁(I)≤8:Then
+{27}→⌊MOVE1
+End
+End
+
+L₄→⌊MOVE2
+For(I,13,dim(L₂))
+If L₂(I)≥7 and L₂(I)≤8:Then
+{27}→⌊MOVE2
+End
+End
+
+Lbl X
+Output(8,1,"WHAT WILL TRAINER 1'S     "+Str1+" DO?")
+For(I,1,dim(⌊MOVE1))
+⌊MOVE1(I)→J
+Output(2+I,3,sub(Str9,L₅(J),L₅(J+1)-L₅(J)))
+End
+1→X
+Output(3,1,">")
+0→K
+getKey
+Repeat K=105
+getKey→K
+If K=25 or K=34:Then
+Output(2+X,1," ")
+If K=25:Then
+remainder(X+dim(⌊MOVE1)-2,dim(⌊MOVE1))+1→X
+Else
+remainder(X+dim(⌊MOVE1),dim(⌊MOVE1))+1→X
+End
+Output(2+X,1,">")
+End
+
+If K≥92 and K≤94:Then
+If K-91≤dim(⌊MOVE1):Then
+Output(2+X,1," ")
+K-91→X
+Output(2+X,1,">")
+End
+End
+
+If K≥82 and K≤83:Then
+If K-78≤dim(⌊MOVE1):Then
+Output(2+X,1," ")
+K-78→X
+Output(2+X,1,">")
+End
+End
+End
+
+If X=5:Then
+1→L
+prgmSWITCH
+End
+If X=0
+Goto X
+Output(8,1,"                                         ")
+For(I,1,dim(⌊MOVE1))
+Output(2+I,1,"                          ")
+End
+
+Lbl Y
+Output(8,1,"WHAT WILL TRAINER 2'S     "+Str2+" DO?")
+For(I,1,dim(⌊MOVE2))
+⌊MOVE2(I)→J
+Output(2+I,3,sub(Str9,L₅(J),L₅(J+1)-L₅(J)))
+End
+
+1→Y
+Output(3,1,">")
+getKey
+Repeat K=105
+getKey→K
+If K=25 or K=34:Then
+Output(2+Y,1," ")
+If K=25:Then
+remainder(Y+dim(⌊MOVE2)-2,dim(⌊MOVE2))+1→Y
+Else
+remainder(Y+dim(⌊MOVE2),dim(⌊MOVE2))+1→Y
+End
+Output(2+Y,1,">")
+End
+
+If K≥92 and K≤94:Then
+If K-91≤dim(⌊MOVE2):Then
+Output(2+Y,1," ")
+K-91→Y
+Output(2+Y,1,">")
+End
+End
+
+If K≥82 and K≤83:Then
+If K-78≤dim(⌊MOVE2):Then
+Output(2+Y,1," ")
+K-78→Y
+Output(2+Y,1,">")
+End
+End
+End
+
+If Y=5:Then
+2→L
+prgmSWITCH
+End
+If Y=0
+Goto Y
+Output(8,1,"                                         ")
+For(I,1,dim(⌊MOVE2))
+Output(2+I,1,"                          ")
+End
+
+"SPEED CHECK
+{0,0}→⌊SPEED
+L₁(11)*⌊STAT([C](1,5)+7)→⌊SPEED(1)
+L₂(11)*⌊STAT([C](2,5)+7)→⌊SPEED(2)
+If L₁(12)=3
+⌊SPEED(1)*0.5→⌊SPEED(1)
+If L₂(12)=3
+⌊SPEED(2)*0.5→⌊SPEED(2)
+
+If ⌊SPEED(1)=⌊SPEED(2):Then
+randInt(1,2)→L
+Else:If ⌊SPEED(1)>⌊SPEED(2):Then
+1→L
+Else
+2→L
+End
+End
+
+"PRIORITY CHECK
+{0,0}→⌊PRIOR
+For(I,1,dim(⌊MPRI1))
+If ⌊MOVE1(X)=⌊MPRI1(I)
+⌊MPRI2(I)→⌊PRIOR(1)
+If ⌊MOVE2(Y)=⌊MPRI1(I)
+⌊MPRI2(I)→⌊PRIOR(2)
+End
+If ⌊PRIOR(1)>⌊PRIOR(2)
+1→L
+If ⌊PRIOR(2)>⌊PRIOR(1)
+2→L
+
+If L=1:Then
+Str1→Str3
+Str2→Str4
+⌊MOVE1(X)→M
+prgmPREMOVE
+prgmMOVEEND
+If L₂(5):Then
+If L:Then
+2→L
+Str2→Str3
+Str1→Str4
+⌊MOVE2(Y)→M
+prgmPREMOVE
+Else
+Output(8,1,Str4+" FLINCHED AND")
+Output(9,1,"COULDN'T MOVE!")
+Pause 
+Output(8,1,"                                        ")
+End
+prgmMOVEEND
+End
+Else
+Str2→Str3
+Str1→Str4
+⌊MOVE2(Y)→M
+prgmPREMOVE
+prgmMOVEEND
+If L₂(5):Then
+If L:Then
+1→L
+Str1→Str3
+Str2→Str4
+⌊MOVE1(X)→M
+prgmPREMOVE
+Else
+Output(8,1,Str4+" FLINCHED AND")
+Output(9,1,"COULDN'T MOVE!")
+Pause 
+Output(8,1,"                                        ")
+End
+prgmMOVEEND
+End
+End
+
+If L₁(1)≠1:Then
+L₁→⌊TEMP
+L₂→L₁
+⌊TEMP→L₂
+End
+
+prgmENDTURN
+
+
+End
+
+prgmENDPKMN

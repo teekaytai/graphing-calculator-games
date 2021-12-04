@@ -1,0 +1,16 @@
+If L₁(1)=F:Then
+3→L₁(12)
+Else
+3→L₂(12)
+End
+
+If F=1:Then
+Output(1,21,"PAR")
+Output(8,1,Str1+" IS PARALYSED!")
+Else
+Output(2,21,"PAR")
+Output(8,1,Str2+" IS PARALYSED!")
+End
+Output(9,1,"IT MAY BE UNABLE TO MOVE!")
+Pause 
+Output(8,1,"                                                   ")

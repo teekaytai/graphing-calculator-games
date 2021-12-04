@@ -1,0 +1,227 @@
+StoreGDB 0
+1→W
+ClrHome
+Lbl A
+Menu("SNAKE","PLAY",G,"HOW TO PLAY",H,"OPTIONS",O,"LEADERBOARDS",L,"QUIT",Q)
+
+Lbl H
+Output(1,8,"HOW TO PLAY")
+Disp "","","USE ARROW KEYS TO CONTROL","SNAKE.","","PRESS [ALPHA] TO PAUSE AND","UNPAUSE.","","HAVE FUN!"
+Repeat getKey:End
+ClrHome
+Goto A
+
+Lbl O
+Menu("OPTIONS","SCREEN WRAPPING: O"+sub("NFF",2-W,2-W),S,"BACK",A)
+Lbl S
+Disp "IF TURNED ON, SNAKE WRAPS","AROUND TO THE OTHER SIDE","WHEN YOU GO OFF AN EDGE.","","IF TURNED OFF, SNAKE MUST","NOT GO OFF AN EDGE!"
+Lbl W
+Input "SCREEN WRAPPING? Y/N:",Str1
+If Str1="Y" or Str1="N"
+Then:Str1="Y"→W
+Else:Goto W
+End
+ClrHome
+Goto O
+
+Lbl L
+Menu("LEADERBOARDS","WITH SCREEN WRAPPING",L1,"WITHOUT SCREEN WRAPPING",L2,"BACK",A)
+Lbl L1
+Disp "TOP 8 SCORES (WITH S.W.)"
+For(I,1,8)
+Disp ⌊SNK2(I)
+End
+For(I,1,8)
+⌊SNK1(I)→X
+"?"→Str0
+While X≠0
+X/100→X
+sub("ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 ",100fPart(X),1)+Str0→Str0
+int(X)→X
+End
+Output(I+1,1,sub(Str0,1,length(Str0)-1))
+End
+Repeat getKey:End
+ClrHome
+Goto L
+Lbl L2
+Disp "TOP 8 SCORES (W/O S.W.)"
+For(I,1,8)
+Disp ⌊SNK4(I)
+End
+For(I,1,8)
+⌊SNK3(I)→X
+"?"→Str0
+While X≠0
+X/100→X
+sub("ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 ",100fPart(X),1)+Str0→Str0
+int(X)→X
+End
+Output(I+1,1,sub(Str0,1,length(Str0)-1)
+End
+Repeat getKey:End
+ClrHome
+Goto L
+
+Lbl G
+FnOff 
+ClrDraw
+AxesOff
+0.5→Xmin
+31.5→Xmax
+0.5→Ymin
+19.5→Ymax
+{16.1}→L₁
+Pt-On(16,10,2)
+1→L
+Repeat F≠16.1
+randInt(1,31)+randInt(1,19)/100→F
+End
+Pt-On(iPart(F),100fPart(F),3)
+16.1→S
+0→X:0→Y
+Repeat S≠16.1
+getKey→K
+If K=24
+Then:­1→X:0→Y
+Else:If K=25
+Then:0→X:1→Y
+Else:If K=26
+Then:1→X:0→Y
+Else:If K=34
+Then:0→X:­1→Y
+End
+End
+End
+End
+S+X+Y/100→S
+End
+
+Repeat pxl-Test(int((19.5-100fPart(S))/0.1158536585)+3,int((iPart(S)-0.5)/0.1174242424)+3) and S≠L₁(dim(L₁))
+
+If S=F
+Then
+Pt-Off(iPart(F),100fPart(F),3)
+augment({S},L₁)→L₁
+Pt-On(iPart(S),100fPart(S),2)
+L+1→L
+Repeat not(pxl-Test(int((19.5-100fPart(F))/0.1158536585)+3,int((iPart(F)-0.5)/0.1174242424)+3))
+randInt(1,31)+randInt(1,19)/100→F
+End
+Pt-On(iPart(F),100fPart(F),3)
+Else
+Pt-Off(iPart(L₁(dim(L₁))),100fPart(L₁(dim(L₁))),2)
+augment({S},L₁)→L₁
+dim(L₁)-1→dim(L₁)
+End
+Pt-On(iPart(S),100fPart(S),2)
+getKey→K
+If K=24 and X≠1
+Then:­1→X:0→Y
+Else:If K=25 and Y≠­1
+Then:0→X:1→Y
+Else:If K=26 and X≠­1
+Then:1→X:0→Y
+Else:If K=34 and Y≠1
+Then:0→X:­1→Y
+Else:If K=31
+Then:
+Repeat getKey=31
+End
+End
+End
+End
+End
+End
+S+X+Y/100→S
+If W:Then
+If S>31.2:Then:S-31→S
+Else:If S<1:Then:S+31→S
+Else:If fPart(S)>0.19:Then:S-0.19→S
+Else:If fPart(S)<0.01:Then:S+0.19→S
+End
+End
+End
+End
+Else
+If S>31.19 or S<1 or fPart(S)>0.19 or fPart(S)<0.01
+Then
+S→L₁(dim(L₁)+1)
+L₁(1)→S
+End
+End
+
+End
+
+Pt-Off(iPart(L₁(dim(L₁))),100fPart(L₁(dim(L₁))),2)
+Pt-On(iPart(S),100fPart(S),2,11)
+TextColor(BLACK)
+Text(­1,9,80,"GAME OVER")
+Text(­1,78,85,"SCORE:",L)
+Pause "",0.5
+Repeat getKey:End
+
+For(I,1,8)
+If (W and L>⌊SNK2(I)) or (not(W) and L>⌊SNK4(I))
+Then
+Disp "YOU GOT INTO THE TOP 8","HIGH SCORES!",""
+Disp "ENTER YOUR NAME! (MAXIMUM","7 ALPHANUMERIC CHARACTERS"
+Input "PLS):",Str0
+0→Z
+Lbl N
+While length(Str0)>7
+Input "MAXIMUM 7 CHARACTERS PLS: ",Str0
+End
+For(J,1,length(Str0))
+inString("ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 ",sub(Str0,J,1))→θ
+If θ
+Then
+Z+θ*10^(2(length(Str0)-J))→Z
+Else
+length(Str0)→J
+Disp "ALPHABETS AND NUMBERS"
+Input "ONLY:",Str0
+0→Z
+End
+End
+If not(Z):Goto N
+If W
+Then
+For(J,8,1,­1)
+If I≠J
+Then
+⌊SNK1(J-1)→⌊SNK1(J)
+⌊SNK2(J-1)→⌊SNK2(J)
+Else
+Z→⌊SNK1(J)
+L→⌊SNK2(J)
+1→J
+End
+End
+Else
+For(J,8,1,­1)
+If I≠J
+Then
+⌊SNK3(J-1)→⌊SNK3(J)
+⌊SNK4(J-1)→⌊SNK4(J)
+Else
+Z→⌊SNK3(J)
+L→⌊SNK4(J)
+1→J
+End
+End
+End
+9→I
+End
+End
+If I=9
+Goto A
+If W
+Goto L1
+Goto L2
+
+Lbl Q
+ClrDraw
+RecallGDB 0
+DelVar GDB0
+Disp "THANKS FOR PLAYING! :D"

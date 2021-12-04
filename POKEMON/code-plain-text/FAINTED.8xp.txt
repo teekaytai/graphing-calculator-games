@@ -1,0 +1,175 @@
+ClrHome
+For(F,1,dim(⌊FAINT))
+Output(8,1,"TRAINER "+toString(⌊FAINT(F))+",")
+Output(9,1,"CHOOSE A POKEMON.")
+If ⌊FAINT(F)=1:Then
+dim([A])→⌊TEMP
+For(I,1,⌊TEMP(1))
+[A](I,2)→J
+Output(I,3,sub(Str0,L₆(J),L₆(J+1)-L₆(J)))
+Output(I,15+([A](I,5)≤99)+([A](I,5)≤9),toString([A](I,5))+"/"+toString([A](I,6)))
+Output(I,23,sub(Str7,3[A](I,12)+1,3))
+End
+
+Output(1,1,">")
+1→V
+0→K
+getKey
+Repeat K=105
+getKey→K
+If K=25 or K=34:Then
+Output(V,1," ")
+If K=25:Then
+remainder(V+⌊TEMP(1)-2,⌊TEMP(1))+1→V
+Else
+remainder(V+⌊TEMP(1),⌊TEMP(1))+1→V
+End
+Output(V,1,">")
+End
+
+If K≥92 and K≤94:Then
+If K-91≤⌊TEMP(1):Then
+Output(V,1," ")
+K-91→V
+Output(V,1,">")
+End
+End
+
+If K≥82 and K≤84:Then
+If K-78≤⌊TEMP(1):Then
+Output(V,1," ")
+K-78→V
+Output(V,1,">")
+End
+End
+
+If K=105 and [A](V,5)=0:Then
+Output(V,1," ")
+Output(8,1,"         ,")
+Output(9,1,"                 ")
+[A](V,2)→J
+Output(8,1,sub(Str0,L₆(J),L₆(J+1)-L₆(J))+" IS UNABLE")
+Output(9,1,"TO BATTLE.")
+Pause 
+Output(8,1,"                                    ")
+Output(8,1,"TRAINER 1,")
+Output(9,1,"CHOOSE A POKEMON.")
+Output(V,1,">")
+0→K
+getKey
+End
+End
+
+Else
+L₂(5)→[B](W,5)
+L₂(12)→[B](W,12)
+dim([B])→⌊TEMP
+For(I,1,⌊TEMP(1))
+[B](I,2)→J
+Output(I,3,sub(Str0,L₆(J),L₆(J+1)-L₆(J)))
+Output(I,15+([B](I,5)≤99)+([B](I,5)≤9),toString([B](I,5))+"/"+toString([B](I,6)))
+Output(I,23,sub(Str7,3[B](I,12)+1,3))
+End
+
+Output(1,1,">")
+1→W
+0→K
+getKey
+Repeat K=105
+getKey→K
+If K=25 or K=34:Then
+Output(W,1," ")
+If K=25:Then
+remainder(W+⌊TEMP(1)-2,⌊TEMP(1))+1→W
+Else
+remainder(W+⌊TEMP(1),⌊TEMP(1))+1→W
+End
+Output(W,1,">")
+End
+
+If K≥92 and K≤94:Then
+If K-91≤⌊TEMP(1):Then
+Output(W,1," ")
+K-91→W
+Output(W,1,">")
+End
+End
+
+If K≥82 and K≤84:Then
+If K-78≤⌊TEMP(1):Then
+Output(W,1," ")
+K-78→W
+Output(W,1,">")
+End
+End
+
+If K=105 and [B](W,5)=0:Then
+Output(W,1," ")
+Output(8,1,"         ,")
+Output(9,1,"                 ")
+[B](W,2)→J
+Output(8,1,sub(Str0,L₆(J),L₆(J+1)-L₆(J))+" IS UNABLE")
+Output(9,1,"TO BATTLE.")
+Pause 
+Output(8,1,"                                    ")
+Output(8,1,"TRAINER 2,"
+Output(9,1,"CHOOSE A POKEMON.")
+Output(W,1,">")
+0→K
+getKey
+End
+End
+End
+
+ClrHome
+End
+
+If L₁(5):Then
+Output(1,1,Str1)
+Output(1,13+(L₁(5)≤99)+(L₁(5)≤9),toString(L₁(5))+"/"+toString(L₁(6)))
+Output(1,21,sub(Str7,3L₁(12)+1,3))
+End
+If L₂(5):Then
+Output(2,1,Str2)
+Output(2,13+(L₂(5)≤99)+(L₂(5)≤9),toString(L₂(5))+"/"+toString(L₂(6)))
+Output(2,21,sub(Str7,3L₂(12)+1,3))
+End
+
+For(F,1,dim(⌊FAINT))
+If ⌊FAINT(F)=1:Then
+For(I,1,6)
+0→[C](1,I)
+End
+Matrlist([A],V,L₁)
+V→⌊PKMN(1)
+L₁(2)→J
+sub(Str0,L₆(J),L₆(J+1)-L₆(J))→Str1
+Matrlist([J],J,L₃)
+1→L₃(5)
+Output(8,1,"GO "+Str1+"!")
+Wait 1
+Output(1,1,Str1)
+Output(1,13+(L₁(5)≤99)+(L₁(5)≤9),toString(L₁(5))+"/"+toString(L₁(6)))
+Output(1,21,sub(Str7,3L₁(12)+1,3))
+
+Else
+For(I,1,6)
+0→[C](2,I)
+End
+Matrlist([B],W,L₂)
+W→⌊PKMN(2)
+L₂(2)→J
+sub(Str0,L₆(J),L₆(J+1)-L₆(J))→Str2
+Matrlist([J],J,L₄)
+1→L₄(5)
+Output(8,1,"GO "+Str2+"!")
+Wait 1
+Output(2,1,Str2)
+Output(2,13+(L₂(5)≤99)+(L₂(5)≤9),toString(L₂(5))+"/"+toString(L₂(6)))
+Output(2,21,sub(Str7,3L₂(12)+1,3))
+End
+Pause 
+Output(8,1,"               "
+End
+
+0→dim(⌊FAINT)

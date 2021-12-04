@@ -1,0 +1,4 @@
+If M=27:Then
+120→P
+prgmATTACK
+End

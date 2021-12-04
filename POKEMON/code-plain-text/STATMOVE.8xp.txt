@@ -1,0 +1,26 @@
+Output(8,1,piecewise(Str1,⌊S(1)=1,Str2,⌊S(1)=2)+"'S "+piecewise("ATTACK",⌊S(2)=1,"DEFENSE",⌊S(2)=2,"SPECIAL",⌊S(2)=3 or ⌊S(2)=4,"SPEED",⌊S(2)=5))
+If ⌊S(3)>0:Then
+If [C](⌊S(1),⌊S(2))<6:Then
+Output(9,1,piecewise("ATTACK R",⌊S(2)=3,"DEFENSE R",⌊S(2)=4,"R",⌊S(2)≠3 and ⌊S(2)≠4)+"OSE"+piecewise("!",⌊S(3)=1," SHARPLY!",⌊S(3)=2," DRASTICALLY!",⌊S(3)≥3))
+min([C](⌊S(1),⌊S(2))+⌊S(3),6)→[C](⌊S(1),⌊S(2))
+Else
+Output(9,1,piecewise("ATTACK W",⌊S(2)=3,"DEFENSE W",⌊S(2)=4,"W",⌊S(2)≠3 and ⌊S(2)≠4)+"ON'T GO"+piecewise(" ANY HIGHER!",⌊S(2)≠3 and ⌊S(2)≠4," ",⌊S(2)=3 or ⌊S(2)=4))
+If ⌊S(2)=3 or ⌊S(2)=4
+Output(10,1,"ANY HIGHER!")
+End
+Else
+If [C](⌊S(1),⌊S(2))>­6:Then
+If ⌊S(2)=3 or ⌊S(2)=4:Then
+Output(9,1,piecewise("ATTACK",⌊S(2)=3,"DEFENSE",⌊S(2)=4)+" "+piecewise("F",⌊S(3)=­1,"HARSHLY F",⌊S(3)=­2,"SEVERELY F",⌊S(3)≤­3)+"ELL!")
+Else
+Output(9,1,piecewise("F",⌊S(3)=­1,"HARSHLY F",⌊S(3)=­2,"SEVERELY F",⌊S(3)≤­3)+"ELL!")
+End
+max([C](⌊S(1),⌊S(2))+⌊S(3),­6)→[C](⌊S(1),⌊S(2))
+Else
+Output(9,1,piecewise("ATTACK W",⌊S(2)=3,"DEFENSE W",⌊S(2)=4,"W",⌊S(2)≠3 and ⌊S(2)≠4)+"ON'T GO"+piecewise(" ANY LOWER!",⌊S(2)≠3 and ⌊S(2)≠4," ",⌊S(2)=3 or ⌊S(2)=4))
+If ⌊S(2)=3 or ⌊S(2)=4
+Output(10,1,"ANY LOWER!")
+End
+End
+Pause 
+Output(8,1,"                                                                ")

@@ -1,0 +1,154 @@
+prgmENDCHECK
+
+If G=0:Then
+
+
+1→L
+Str1→Str3
+Str2→Str4
+If L₁(11)*⌊STAT([C](1,5)+7)<L₂(11)*⌊STAT([C](2,5)+7) or L₁(11)*⌊STAT([C](1,5)+7)=L₂(11)*⌊STAT([C](1,5)+7) and randInt(0,1):Then
+2→L
+L₁→⌊TEMP
+L₂→L₁
+⌊TEMP→L₂
+Str1→Str4
+Str2→Str3
+End
+
+If L₁(5) and L₂(5):Then
+For(I,13,dim(L₂))
+If L₂(I)=1:Then
+Output(8,1,Str4+"'S HEALTH IS")
+Output(9,1,"SAPPED BY LEECH SEED!")
+max(int(L₂(6)/8),1)→D
+min(L₁(5)+D,L₁(6))→L₁(5)
+max(L₂(5)-D,0)→L₂(5)
+Output(3-L,13,"   ")
+Output(3-L,13+(L₂(5)≤99)+(L₂(5)≤9),L₂(5))
+Output(L,13,"   ")
+Output(L,13+(L₁(5)≤99)+(L₁(5)≤9),L₁(5))
+Pause 
+Output(8,1,"                                               ")
+If L₂(5)=0:Then
+3-L→F
+prgmFAINT
+End
+dim(L₂)→I
+End
+End
+End
+
+If L₂(5) and L₁(5):Then
+For(I,13,dim(L₁))
+If L₁(I)=1:Then
+Output(8,1,Str3+"'S HEALTH IS")
+Output(9,1,"SAPPED BY LEECH SEED!")
+max(int(L₁(6)/8),1)→D
+min(L₂(5)+D,L₂(6))→L₂(5)
+max(L₁(5)-D,0)→L₁(5)
+Output(L,13,"   ")
+Output(L,13+(L₁(5)≤99)+(L₁(5)≤9),L₁(5))
+Output(3-L,13,"   ")
+Output(3-L,13+(L₂(5)≤99)+(L₂(5)≤9),L₂(5))
+Pause 
+Output(8,1,"                                               ")
+If L₁(5)=0:Then
+L→F
+prgmFAINT
+End
+dim(L₁)→I
+End
+End
+End
+
+If L₁(5) and (L₁(12)=4 or L₁(12)=5):Then
+Output(8,1,Str3+" WAS HURT")
+Output(9,1,"BY POISON!")
+If L₁(12)=4:Then
+min(max(int(L₁(6)/8),1),L₁(5))→D
+Else
+[C](L,6)+1→[C](L,6)
+min(max(int(L₁(6)/16)*[C](L,6),1),L₁(5))→D
+End
+L₁(5)-D→L₁(5)
+Output(L,13,"   ")
+Output(L,13+(L₁(5)≤99)+(L₁(5)≤9),L₁(5))
+Pause 
+Output(8,1,"                                    ")
+If L₁(5)=0:Then
+L→F
+prgmFAINT
+End
+End
+
+If L₂(5) and (L₂(12)=4 or L₂(12)=5):Then
+Output(8,1,Str4+" WAS HURT"
+Output(9,1,"BY POISON!")
+If L₂(12)=4:Then
+min(max(int(L₂(6)/8),1),L₂(5))→D
+Else
+[C](L,6)+1→[C](L,6)
+min(max(int(L₂(6)/16)*[C](L,6),1),L₂(5))→D
+End
+L₂(5)-D→L₂(5)
+Output(3-L,13,"   ")
+Output(3-L,13+(L₂(5)≤99)+(L₂(5)≤9),L₂(5))
+Pause 
+Output(8,1,"                                    ")
+If L₂(5)=0:Then
+3-L→F
+prgmFAINT
+End
+End
+
+If L₁(5) and L₁(12)=1:Then
+Output(8,1,Str3+" WAS HURT")
+Output(9,1,"BY ITS BURN!")
+min(max(int(L₁(6)/8),1),L₁(5))→D
+L₁(5)-D→L₁(5)
+Output(L,13,"   ")
+Output(L,13+(L₁(5)≤99)+(L₁(5)≤9),L₁(5))
+Pause 
+Output(8,1,"                                      ")
+If L₁(5)=0:Then
+L→F
+prgmFAINT
+End
+End
+
+If L₂(5) and L₂(12)=1:Then
+Output(8,1,Str4+" WAS HURT")
+Output(9,1,"BY ITS BURN!")
+min(max(int(L₂(6)/8),1),L₂(5))→D
+L₂(5)-D→L₂(5)
+Output(3-L,13,"   ")
+Output(3-L,13+(L₂(5)≤99)+(L₂(5)≤9),L₂(5))
+Pause 
+Output(8,1,"                                      ")
+If L₂(5)=0:Then
+3-L→F
+prgmFAINT
+End
+End
+
+
+prgmENDCHECK
+End
+
+
+If G=0:Then
+
+For(I,3,4)
+If ⌊WALLS(I):Then
+⌊WALLS(I)-1→⌊WALLS(I)
+If ⌊WALLS(I)=0:Then
+Output(8,1,"TEAM "+toString(I-2)+"'S LIGHT SCREEN     WORE OFF!")
+Pause 
+Output(8,1,"                                   ")
+End
+End
+End
+
+If dim(⌊FAINT)
+prgmFAINTED
+End

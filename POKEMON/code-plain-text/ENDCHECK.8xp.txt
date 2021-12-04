@@ -1,0 +1,16 @@
+If L₁(1)≠1:Then
+L₁→⌊TEMP
+L₂→L₁
+⌊TEMP→L₂
+End
+
+L₁(5)→[A](V,5)
+L₂(5)→[B](W,5)
+L₁(12)→[A](V,12)
+L₂(12)→[B](W,12)
+Matrlist([A],5,⌊TEMP)
+If max(⌊TEMP)=0
+G+2→G
+Matrlist([B],5,⌊TEMP)
+If max(⌊TEMP)=0
+G+1→G

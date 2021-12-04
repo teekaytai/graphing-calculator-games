@@ -1,0 +1,11 @@
+If G=1
+Output(8,1,"TRAINER 1 WINS!")
+If G=2
+Output(8,1,"TRAINER 2 WINS!")
+If G=3
+Output(8,1,"IT'S A DRAW! :O")
+Pause "",2
+Pause 
+ClrHome
+Disp "THANKS FOR PLAYING POKEMON","GC! HAVE A NICE DAY!"
+Stop

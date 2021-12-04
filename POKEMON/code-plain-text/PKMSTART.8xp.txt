@@ -1,0 +1,127 @@
+{0,0}→⌊PKMN
+
+Output(8,1,"TRAINER 1, CHOOSE YOUR    FIRST POKEMON.")
+dim([A])→⌊TEMP
+For(I,1,⌊TEMP(1))
+[A](I,2)→J
+Output(I,3,sub(Str0,L₆(J),L₆(J+1)-L₆(J)))
+Output(I,15+([A](I,5)≤99)+([A](I,5)≤9),toString([A](I,5))+"/"+toString([A](I,6)))
+Output(I,23,sub(Str7,3[A](I,12)+1,3))
+End
+
+Output(1,1,">")
+1→V
+0→K
+getKey
+Repeat K=105
+getKey→K
+If K=25 or K=34:Then
+Output(V,1," ")
+If K=25:Then
+remainder(V+⌊TEMP(1)-2,⌊TEMP(1))+1→V
+Else
+remainder(V+⌊TEMP(1),⌊TEMP(1))+1→V
+End
+Output(V,1,">")
+End
+
+If K≥92 and K≤94:Then
+If K-91≤⌊TEMP(1):Then
+Output(V,1," ")
+K-91→V
+Output(V,1,">")
+End
+End
+
+If K≥82 and K≤84:Then
+If K-78≤⌊TEMP(1):Then
+Output(V,1," ")
+K-78→V
+Output(V,1,">")
+End
+End
+End
+V→⌊PKMN(1)
+
+ClrHome
+Output(8,1,"TRAINER 2, CHOOSE YOUR    FIRST POKEMON.")
+dim([B])→⌊TEMP
+For(I,1,⌊TEMP(1))
+[B](I,2)→J
+Output(I,3,sub(Str0,L₆(J),L₆(J+1)-L₆(J)))
+Output(I,15+([B](I,5)≤99)+([B](I,5)≤9),toString([B](I,5))+"/"+toString([B](I,6)))
+Output(I,23,sub(Str7,3[B](I,12)+1,3))
+End
+
+Output(1,1,">")
+1→W
+0→K
+getKey
+Repeat K=105
+getKey→K
+If K=25 or K=34:Then
+Output(W,1," ")
+If K=25:Then
+remainder(W+⌊TEMP(1)-2,⌊TEMP(1))+1→W
+Else
+remainder(W+⌊TEMP(1),⌊TEMP(1))+1→W
+End
+Output(W,1,">")
+End
+
+If K≥92 and K≤94:Then
+If K-91≤⌊TEMP(1):Then
+Output(W,1," ")
+K-91→W
+Output(W,1,">")
+End
+End
+
+If K≥82 and K≤84:Then
+If K-78≤⌊TEMP(1):Then
+Output(W,1," ")
+K-78→W
+Output(W,1,">")
+End
+End
+End
+W→⌊PKMN(2)
+ClrHome
+
+Matrlist([A],V,L₁)
+Matrlist([B],W,L₂)
+L₁(2)→A
+sub(Str0,L₆(A),L₆(A+1)-L₆(A))→Str1
+L₂(2)→B
+sub(Str0,L₆(B),L₆(B+1)-L₆(B))→Str2
+
+0→dim(L₃)
+For(I,1,4)
+[J](L₁(2),I)→L₃(I)
+End
+1→L₃(5)
+0→dim(L₄)
+For(I,1,4)
+[J](L₂(2),I)→L₄(I)
+End
+1→L₄(5)
+
+{2/8,2/7,2/6,2/5,2/4,2/3,2/2,3/2,4/2,5/2,6/2,7/2,8/2}→⌊STAT
+[[0,0,0,0,0,0][0,0,0,0,0,0]]→[C]
+0→dim(⌊FAINT)
+{0,0,0,0}→⌊WALLS
+
+Output(8,1,"GO "+Str1+"!")
+Wait 1
+Output(1,1,Str1)
+Output(1,13+(L₁(5)≤99)+(L₁(5)≤9),toString(L₁(5))+"/"+toString(L₁(6)))
+Output(1,21,sub(Str7,3L₁(12)+1,3))
+Pause 
+Output(8,1,"               ")
+Output(8,1,"GO "+Str2+"!")
+Wait 1
+Output(2,1,Str2)
+Output(2,13+(L₂(5)≤99)+(L₂(5)≤9),toString(L₂(5))+"/"+toString(L₂(6)))
+Output(2,21,sub(Str7,3L₂(12)+1,3))
+Pause 
+Output(8,1,"               ")

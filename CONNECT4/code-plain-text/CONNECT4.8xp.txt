@@ -1,0 +1,302 @@
+{6,12,14,16,18,20,20,20,22,22,22}→L₆
+StoreGDB 0
+ClrHome
+Lbl A
+Menu("CONNECT 4","PLAY",P,"HOW TO PLAY",H,"QUIT",Q)
+Lbl H
+Output(1,8,"HOW TO PLAY")
+Disp "","","USE LEFT AND RIGHT ARROW","KEYS TO SELECT A COLUMN","AND [ENTER] TO DROP DISCS.","","LINE UP FOUR DISCS OF YOUR","COLOUR TO WIN!"
+getKey
+Repeat getKey:End
+ClrHome
+Goto A
+
+Lbl P
+0→P
+0→L
+Menu("NUMBER OF PLAYERS","2 PLAYERS",G,"1 PLAYER",P1,"0 PLAYERS",P2,"BACK",A)
+Lbl P1
+1→P
+Menu("SELECT AI LEVEL","EASY AI",L1,"NORMAL AI",L2,"BACK",P)
+Lbl L1:1→L:Goto D
+Lbl L2:2→L:Goto D
+
+Lbl D
+Menu("PLAYER 1 OR 2","PLAYER 1 (BLUE)",D1,"PLAYER 2 (RED)",D2,"BACK",P1)
+Lbl D1:10→D:Goto G
+Lbl D2:11→D:Goto G
+
+Lbl P2
+2→P
+12→D
+Menu("SELECT AI LEVEL","EASY AI VS EASY AI",L3,"NORMAL AI VS NORMAL AI",L4,"BACK",P)
+Lbl L3:1→L:Goto G
+Lbl L4:2→L:Goto G
+
+Lbl G
+ClrDraw
+FnOff 
+AxesOff
+0→Ymin
+164→Ymax
+0→Xmin
+264→Xmax
+For(I,0,168,24)
+Line(I,0,I,145+19(I=0 or I=168),MAGENTA)
+End
+For(I,1,145,24)
+Line(0,I,168,I,MAGENTA)
+End
+DelVar [A]
+{6,7}→dim([A])
+{1,1,1,1,1,1,1}→L₁
+0→dim(L₂)
+0→G
+1→X
+10→C
+TextColor(12)
+Text(132,179,"PRESS [2ND]")
+Text(147,193,"TO QUIT")
+TextColor(10)
+If P=1
+Then
+If C=D
+Then:Text(­1,15,193,"YOUR")
+Else:Text(­1,15,193,"AI'S")
+End
+Else
+Text(­1,15,182,"BLUE'S")
+End
+Text(­1,34,193,"TURN")
+If not(P) or C=D
+Text(3,9,"V")
+getKey
+
+Repeat G
+
+If P and C≠D
+Then
+Text(3,24X-15,"    ")
+Text(65,186,"THE AI IS")
+Text(80,179,"THINKING...")
+randIntNoRep(1,7)→L₃
+For(I,1,7)
+If L₁(L₃(I))<7
+Then
+L₃(I)→X
+8→I
+End
+End
+
+If L>1
+Then
+C→E
+0→N
+7→V
+Repeat N or not(V)
+L₁(V)→Y
+If Y<7:Then
+prgmLINEOF4
+For(J,1,7,2)
+If L₂(J)+L₂(J+1)≥3
+Then
+1→N
+8→J
+End
+End
+End
+V-1→V
+End
+If N
+Then:V+1→X
+Else
+If C=10
+Then:11→E
+Else:10→E
+End
+0→N
+7→V
+Repeat N or not(V)
+L₁(V)→Y
+If Y<7:Then
+prgmLINEOF4
+For(J,1,7,2)
+If L₂(J)+L₂(J+1)≥3
+Then
+1→N
+8→J
+End
+End
+End
+V-1→V
+End
+If N
+Then:V+1→X
+Else
+For(J,1,7)
+L₃(J)→V
+L₁(V)+1→Y
+If Y<8
+Then
+If Y=7
+Then
+V→X
+8→J
+Else
+0→N
+prgmLINEOF4
+For(H,1,7,2)
+If L₂(H)+L₂(H+1)≥3
+Then
+1→N
+8→H
+End
+End
+If not(N)
+Then:
+V→X
+8→J
+End
+End
+End
+End
+End
+End
+End
+Text(­1,65,186,"     ")
+Text(­1,80,179,"       ")
+Text(3,24X-15,"V")
+If getKey=21
+Then:21→K
+Else:105→K
+End
+Else
+getKey
+Repeat K
+getKey→K
+End
+End
+
+If K=24 or K=26
+Then
+Text(3,24X-15,"    ")
+If K=24
+Then
+X-1→X
+If X=0:7→X
+Else
+X+1→X
+If X=8:1→X
+End
+Text(3,24X-15,"V")
+Else:If K=105 and L₁(X)≠7
+Then
+L₁(X)→Y
+C→[A](Y,X)
+Y+1→L₁(X)
+For(I,1,11)
+164+I-24Y→W
+For(J,24X-L₆(I)/2-11,24X+L₆(I)/2-12)
+Pxl-On(W,J,C)
+End
+End
+For(I,11,1,­1)
+187-I-24Y→W
+For(J,24X-L₆(I)/2-11,24X+L₆(I)/2-12)
+Pxl-On(W,J,C)
+End
+End
+C→E
+X→V
+prgmLINEOF4
+If L₂(1)+L₂(2)≥3
+Then
+Line(24(X-L₂(1)-1),24Y-12,24(X+L₂(2)),24Y-12,YELLOW)
+1→G
+End
+If L₂(3)+L₂(4)≥3
+Then
+Line(24X-12,24(Y+L₂(3)),24X-12,24(Y-L₂(4)-1),YELLOW)
+1→G
+End
+If L₂(5)+L₂(6)≥3
+Then
+Line(24(X-L₂(5)-1),24(Y+L₂(5)),24(X+L₂(6)),24(Y-L₂(6)-1),YELLOW)
+1→G
+End
+If L₂(7)+L₂(8)≥3
+Then
+Line(24(X-L₂(7)-1),24(Y-L₂(7)-1),24(X+L₂(8)),24(Y+L₂(8)),YELLOW)
+1→G
+End
+
+If G
+Then
+If P=1
+Then
+Text(­1,15,188," YOU ")
+If C=D
+Then:Text(­1,34,186," WIN!")
+Else:Text(­1,34,193,"LOSE")
+End
+Else
+If C=10
+Then:Text(­1,15,173,"  BLUE ")
+Else:Text(­1,15,178,"  RED ")
+End
+Text(­1,34,181," WINS!")
+End
+Pause "",1
+Repeat getKey:End
+Else
+If min(L₁)=7
+Then
+TextColor(13)
+Text(­1,15,182,"IT'S A")
+Text(­1,34,181," DRAW!")
+1→G
+Pause "",1
+Repeat getKey:End
+Else
+If C=10
+Then
+11→C
+TextColor(11)
+If P=1
+Then
+If C=D
+Then:Text(­1,15,193,"YOUR")
+Else:Text(­1,15,193,"AI'S")
+End
+Else
+Text(­1,15,176," RED'S ")
+End
+Else
+10→C
+TextColor(10)
+If P=1
+Then
+If C=D
+Then:Text(­1,15,193,"YOUR")
+Else:Text(­1,15,193,"AI'S")
+End
+Else
+Text(­1,15,183,"BLUE'S")
+End
+End
+Text(­1,34,193,"TURN")
+Text(3,24X-15,"V")
+End
+End
+Else:If K=21:1→G
+End
+End
+
+End
+
+Goto A
+
+Lbl Q
+ClrDraw
+RecallGDB 0
+Disp "THANKS FOR PLAYING! :D"

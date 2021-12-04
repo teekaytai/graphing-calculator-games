@@ -1,0 +1,271 @@
+"TYPE,ACC,POW,CATEGORY
+⌊MTYPE(M)→N
+100→O
+⌊MCAT(M)→Q
+Output(8,1,"TRAINER "+toString(L)+"'S "+Str3)
+Output(9,1,"USED "+sub(Str9,L₅(M),L₅(M+1)-L₅(M))+"!")
+Pause 
+Output(8,1,"                                                    ")
+
+Lbl M
+If M≥27:Then
+prgmMOVES2
+Return
+End
+
+
+If M=2:Then
+randInt(3,26)→M
+Output(8,1,"WAGGLING A FINGER LET IT  USE "+sub(Str9,L₅(M),L₅(M+1)-L₅(M))+"!")
+⌊MTYPE(M)→N
+⌊MCAT(M)→Q
+Pause 
+Output(8,1,"                                                    ")
+End
+If M=2
+Goto M
+
+If M=3:Then
+120→P
+prgmATTACK
+If D:Then
+Output(8,1,Str3+" IS HIT WITH")
+Output(9,1,"RECOIL!")
+min(int(D/3),L₁(5))→D
+L₁(5)-D→L₁(5)
+Output(L,13,"   ")
+Output(L,13+(L₁(5)≤99)+(L₁(5)≤9),L₁(5))
+Pause 
+Output(8,1,"                                 ")
+If L₁(5)=0:Then
+L→F
+prgmFAINT
+End
+If L₂(5) and L₂(12)=0 and L₂(3)≠13 and L₂(4)≠13 and randInt(1,10)=1:Then
+L₂(1)→F
+prgmPARALYSE
+End
+End
+End
+
+If M=4:Then
+40→P
+prgmATTACK
+End
+
+If M=5:Then
+Output(8,1,"LIGHT SCREEN RAISED THE   TEAM'S SPECIAL DEFENSE!")
+5→⌊WALLS(L+2)
+Pause 
+Output(8,1,"                                                 ")
+End
+
+If M=6:Then
+20→P
+prgmATTACK
+If D and L₂(5) and L₂(12)=0 and L₂(3)≠13 and L₂(4)≠13:Then
+L₂(1)→F
+prgmPARALYSE
+End
+End
+
+If M=7:Then
+60→P
+prgmATTACK
+If D and L₂(5):Then
+{3-L,5,­1}→⌊S
+prgmSTATMOVE
+End
+End
+
+If M=8:Then
+If L₂(5) and L₂(3)≠12 and L₂(4)≠12:Then
+For(I,13,dim(L₂))
+If L₂(I)=1
+dim(L₂)+1→I
+End
+If I=dim(L₂)+1:Then
+If randInt(1,10)≤9:Then
+Output(8,1,Str4+" WAS SEEDED!")
+{2,1}→⌊S
+prgmADDSTAT
+Else
+Output(8,1,"BUT IT MISSED!")
+End
+Else
+Output(8,1,"BUT IT FAILED!")
+End
+Else
+Output(8,1,"BUT IT FAILED!")
+End
+Pause 
+Output(8,1,"                       ")
+End
+
+If M=9:Then
+90→O
+130→P
+prgmATTACK
+If D:Then
+{L,3,­2}→⌊S
+prgmSTATMOVE
+End
+End
+
+If M=10:Then
+90→P
+prgmATTACK
+If D and L₂(5) and L₂(12)=0 and L₂(3)≠4 and L₂(4)≠4 and randInt(1,10)≤3:Then
+Output(3-L,21,"PSN")
+Output(8,1,Str4+" WAS POISONED!")
+4→L₂(12)
+Pause 
+Output(8,1,"                         ")
+End
+End
+
+If M=11:Then
+If L₂(5)=0 or L₂(3)=10 or L₂(4)=10 or L₂(12):Then
+Output(8,1,"BUT IT FAILED!")
+Else
+If randInt(1,100)≤85:Then
+Output(3-L,21,"BRN")
+Output(8,1,Str4+" WAS BURNED!")
+1→L₂(12)
+Else
+Output(8,1,"BUT IT MISSED!")
+End
+End
+Pause 
+Output(8,1,"                       ")
+End
+
+If M=12:Then
+85→O
+110→P
+prgmATTACK
+If D and L₂(5) and L₂(3)≠10 and L₂(4)≠10 and L₂(12)=0 and randInt(1,10)=1:Then
+Output(3-L,21,"BRN")
+Output(8,1,Str4+" WAS BURNED!"
+1→L₂(12)
+Pause 
+Output(8,1,"                       ")
+End
+End
+
+If M=13:Then
+95→O
+75→P
+prgmATTACK
+If D and L₂(5) and randInt(1,10)≤3
+0→L
+End
+
+If M=14:Then
+70→O
+120→P
+prgmATTACK
+If D and L₂(5) and randInt(1,10)=1:Then
+{3-L,4,­1}→⌊S
+prgmSTATMOVE
+End
+End
+
+If M=15:Then
+80→O
+110→P
+prgmATTACK
+End
+
+If M=16:Then
+80→P
+prgmATTACK
+If D and L₂(5) and randInt(1,10)=1:Then
+{3-L,4,­1}→⌊S
+prgmSTATMOVE
+End
+End
+
+If M=17:Then
+80→P
+prgmATTACK
+If D and L₂(5) and randInt(1,5)=1
+0→L
+End
+
+If M=18:Then
+90→P
+prgmATTACK
+If D and L₂(5) and L₂(12)=0 and L₂(3)≠15 and L₂(4)≠15 and randInt(1,10)=1:Then
+Output(3-L,21,"FRZ")
+Output(8,1,Str4+" WAS FROZEN")
+Output(9,1,"SOLID!")
+2→L₂(12)
+Pause 
+Output(8,1,"                                ")
+End
+End
+
+If M=19:Then
+90→P
+prgmATTACK
+End
+
+If M=20:Then
+70→O
+110→P
+prgmATTACK
+If D and L₂(5) and L₂(12)=0 and L₂(3)≠15 and L₂(4)≠15 and randInt(1,10)=1:Then
+Output(3-L,21,"FRZ")
+Output(8,1,Str4+" WAS FROZEN")
+Output(9,1,"SOLID!")
+2→L₂(12)
+Pause 
+Output(8,1,"                                ")
+End
+End
+
+If M=21:Then
+40→P
+prgmATTACK
+End
+
+If M=22:Then
+90→P
+prgmATTACK
+If D and L₂(5) and randInt(1,10)=1:Then
+{3-L,4,­1}→⌊S
+prgmSTATMOVE
+End
+End
+
+If M=23:Then
+80→P
+prgmATTACK
+If D and L₂(5) and randInt(1,5)=1:Then
+{3-L,2,­1}→⌊S
+prgmSTATMOVE
+End
+End
+
+If M=24:Then
+80→P
+prgmATTACK
+If D and L₂(5) and randInt(1,10)≤3
+0→L
+End
+
+If M=25:Then
+100→O
+100→P
+prgmATTACK
+End
+
+If M=26:Then
+85→P
+prgmATTACK
+If D and L₂(5) and randInt(1,10)≤3:Then
+3-L→F
+prgmPARALYSE
+End
+End

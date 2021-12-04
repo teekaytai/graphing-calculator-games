@@ -1,0 +1,30 @@
+If M=27:Then
+For(I,13,dim(L₁))
+If L₁(I)=7 or L₁(I)=8:Then
+If L₁(I)=7:Then
+0→L₁(I)
+For(J,13,dim(L₁))
+If L₁(J)≥2 and L₁(J)≤6:Then
+dim(L₁)+1→J
+End
+End
+If J=dim(L₁)+1:Then
+Output(8,1,Str1+" BECAME")
+Output(9,1,"CONFUSED DUE TO FATIGUE!")
+{1,randInt(3,6)}→⌊S
+prgmADDSTAT
+Pause 
+Output(8,1,"                                                  ")
+End
+Else
+7(D≠0)→L₁(I)
+End
+dim(L₁)+1→I
+End
+End
+
+If I=dim(L₁)+1 and D:Then
+{1,randInt(7,8)}→⌊S
+prgmADDSTAT
+End
+End

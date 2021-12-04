@@ -1,0 +1,102 @@
+If L₂(5)=0:Then
+Output(8,1,"BUT IT FAILED!")
+Pause 
+Output(8,1,"              ")
+Return
+End
+
+randInt(1,100)→θ
+If θ>O:Then
+Output(8,1,Str4+" AVOIDED")
+Output(9,1,"THE ATTACK!")
+Pause 
+Output(8,1,"                                     ")
+Return
+End
+
+[I](N,L₂(3))→T
+If L₂(4)
+T*[I](N,L₂(4))→T
+If T=0:Then
+Output(8,1,"IT DOESN'T AFFECT")
+Output(9,1,Str4+"...")
+Pause 
+Output(8,1,"                                        ")
+Return
+End
+
+randInt(1,24)→C
+
+"DAMAGE=((0.4LV+2)*POW*A/D/50+2)*MODIFIER
+42*P/50→D
+If Q=1:Then
+D*(L₁(7)*⌊STAT([C](L,1)+7)^([C](L,1)≥0 or C≠1))/(L₂(8)*⌊STAT([C](3-L,2)+7)^([C](3-L,2)≤0 or C≠1))→D
+Else
+D*(L₁(9)*⌊STAT([C](L,3)+7)^([C](L,3)≥0 or C≠1))/(L₂(10)*⌊STAT([C](3-L,4)+7)^([C](3-L,4)≤0 or C≠1))→D
+End
+D+2→D
+
+"MODIFIER=WEATHER*CRIT*RAND*STAB*TYPE*BURN*OTHER
+If C=1
+D*1.5→D
+
+D*randInt(85,100)/100→D
+
+If L₁(3)=N or L₁(4)=N
+D*1.5→D
+
+D*T→D
+
+If L₁(12)=1 and Q=1
+D/2→D
+
+If Q=2 and ⌊WALLS(5-L) and C≠1
+D/2→D
+
+max(min(int(D),L₂(5)),1)→D
+L₂(5)-D→L₂(5)
+Output(3-L,13,"   ")
+Output(3-L,13+(L₂(5)≤99)+(L₂(5)≤9),L₂(5))
+Wait 0.7
+Output(8,1,"                                                    ")
+If L₂(5)=0:Then
+L₂(1)→⌊FAINT(dim(⌊FAINT)+1)
+10→L₂(12)
+End
+
+If T≠1:Then
+If T<1:Then
+Output(8,1,"IT'S NOT VERY EFFECTIVE...")
+Else
+Output(8,1,"IT'S SUPER EFFECTIVE!")
+End
+Pause 
+Output(8,1,"                          ")
+End
+
+If C=1:Then
+Output(8,1,"A CRITICAL HIT!")
+Pause 
+Output(8,1,"               ")
+End
+
+If L₂(5)=0:Then
+Output(8,1,Str4+" FAINTED!")
+Wait 1
+Output(3-L,1,"                          ")
+Pause 
+Output(8,1,"                    ")
+If L=1:Then
+0→[B](W,5)
+Matrlist([B],5,⌊TEMP)
+If max(⌊TEMP)=0
+G+1→G
+Else
+0→[A](V,5)
+Matrlist([A],5,⌊TEMP)
+If max(⌊TEMP)=0
+G+2→G
+End
+If G
+prgmENDPKMN
+End

@@ -1,0 +1,140 @@
+0→D
+
+If M=1:Then
+Output(8,1,Str3+" RETURN!")
+Wait 1
+Output(L,1,"                          ")
+Pause 
+Output(8,1,"                   ")
+If L₁(1)≠1:Then
+L₁→⌊TEMP
+L₂→L₁
+⌊TEMP→L₂
+End
+
+If L=1:Then
+For(I,1,6)
+0→[C](1,I)
+End
+L₁(5)→[A](⌊PKMN(1),5)
+L₁(12)→[A](⌊PKMN(1),12)
+Matrlist([A],V,L₁)
+V→⌊PKMN(1)
+L₁(2)→J
+sub(Str0,L₆(J),L₆(J+1)-L₆(J))→Str1
+Str1→Str3
+Matrlist([J],J,L₃)
+1→L₃(5)
+Output(8,1,"GO "+Str1+"!")
+Wait 1
+Output(1,1,Str1)
+Output(1,15-int(log(L₁(5))),toString(L₁(5))+"/"+toString(L₁(6)))
+Output(1,21,sub(Str7,3L₁(12)+1,3)
+Else
+For(I,1,6)
+0→[C](2,I)
+End
+L₂(5)→[B](⌊PKMN(2),5)
+L₂(12)→[B](⌊PKMN(2),12)
+Matrlist([B],W,L₂)
+W→⌊PKMN(2)
+L₂(2)→J
+sub(Str0,L₆(J),L₆(J+1)-L₆(J))→Str2
+Str2→Str3
+Matrlist([J],J,L₄)
+1→L₄(5)
+Output(8,1,"GO "+Str2+"!")
+Wait 1
+Output(2,1,Str2)
+Output(2,15-int(log(L₂(5))),toString(L₂(5))+"/"+toString(L₂(6)))
+Output(2,21,sub(Str7,3L₂(12)+1,3)
+End
+Pause 
+Output(8,1,"               ")
+Return
+End
+
+If L₁(1)≠L:Then
+L₁→⌊TEMP
+L₂→L₁
+⌊TEMP→L₂
+End
+
+⌊MTYPE(M)→N
+⌊MCAT(M)→Q
+
+If L₁(12)=2:Then
+If (Q≠3 and N=10) or randInt(1,5)=1:Then
+Output(L,21,"   ")
+Output(8,1,Str3+" THAWED OUT!")
+0→L₁(12)
+Pause 
+Output(8,1,"                       ")
+Else
+Output(8,1,Str3+" IS FROZEN")
+Output(9,1,"SOLID!")
+Pause 
+Output(8,1,"                                ")
+Return
+End
+End
+
+If L₁(12)=6:Then
+Output(8,1,Str3+" WOKE UP!")
+0→L₁(12)
+Pause 
+Output(8,1,"                    ")
+End
+
+If L₁(12)≥7 and L₁(12)≤9:Then
+Output(8,1,Str3+" IS FAST")
+Output(9,1,"ASLEEP.")
+L₁(12)-1→L₁(12)
+Pause 
+Output(8,1,"                                 ")
+Return
+End
+
+If L₁(12)=3:Then
+If randInt(1,4)=1:Then
+Output(8,1,Str3+" IS PARALYSED!")
+Output(9,1,"IT CAN'T MOVE!")
+Pause 
+Output(8,1,"                                        ")
+Return
+End
+End
+
+For(I,13,dim(L₁))
+If L₁(I)≥2 and L₁(I)≤6:Then
+If L₁(I)>2:Then
+Output(8,1,Str1+" IS CONFUSED!")
+Pause 
+Output(8,1,"                        ")
+If randInt(1,3)=1:Then
+Output(8,1,Str1+" HURT ITSELF IN")
+Output(9,1,"ITS CONFUSION!")
+L₁(I)-1→L₁(I)
+L₁(5)-max(min(int((42*40*L₁(7)/L₁(8)/50+2)*randInt(85,100)/100),L₁(5)),1)→L₁(5)
+Output(L,13,"   ")
+Output(L,13+(L₁(5)≤99)+(L₁(5)≤9),L₁(5))
+Pause 
+Output(8,1,"                                         ")
+If L₁(5)=0:Then
+1→F
+prgmFAINT
+End
+Return
+End
+Else
+Output(8,1,Str1+" SNAPPED OUT OF")
+Output(9,1,"ITS CONFUSION!")
+0→L₁(I)
+Pause 
+Output(8,1,"                                         ")
+End
+dim(L₁)→I
+End
+End
+
+prgmMOVES

@@ -1,0 +1,20 @@
+If ⌊S(1)=1:Then
+For(S,13,dim(L₁))
+If L₁(S)=0:Then
+⌊S(2)→L₁(S)
+dim(L₁)+1→S
+End
+End
+If S=dim(L₁)+1
+⌊S(2)→L₁(S)
+
+Else
+For(S,13,dim(L₂))
+If L₂(S)=0:Then
+⌊S(2)→L₂(S)
+dim(L₂)+1→S
+End
+End
+If S=dim(L₂)+1
+⌊S(2)→L₂(S)
+End

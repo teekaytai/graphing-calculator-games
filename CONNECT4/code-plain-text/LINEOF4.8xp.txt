@@ -1,0 +1,64 @@
+1→I
+0→Z
+While V-I>0
+If [A](Y,V-I)=E
+Then:Z+1→Z:I+1→I
+Else:7→I:End
+End
+Z→L₂(1)
+1→I
+0→Z
+While V+I<8
+If [A](Y,V+I)=E
+Then:Z+1→Z:I+1→I
+Else:7→I:End
+End
+Z→L₂(2)
+1→I
+0→Z
+While Y+I<7
+If [A](Y+I,V)=E
+Then:Z+1→Z:I+1→I
+Else:7→I:End
+End
+Z→L₂(3)
+1→I
+0→Z
+While Y-I>0
+If [A](Y-I,V)=E
+Then:Z+1→Z:I+1→I
+Else:7→I:End
+End
+Z→L₂(4)
+1→I
+0→Z
+While V-I>0 and Y+I<7
+If [A](Y+I,V-I)=E
+Then:Z+1→Z:I+1→I
+Else:7→I:End
+End
+Z→L₂(5)
+1→I
+0→Z
+While V+I<8 and Y-I>0
+If [A](Y-I,V+I)=E
+Then:Z+1→Z:I+1→I
+Else:7→I:End
+End
+Z→L₂(6)
+1→I
+0→Z
+While V-I>0 and Y-I>0
+If [A](Y-I,V-I)=E
+Then:Z+1→Z:I+1→I
+Else:7→I:End
+End
+Z→L₂(7)
+1→I
+0→Z
+While V+I<8 and Y+I<7
+If [A](Y+I,V+I)=E
+Then:Z+1→Z:I+1→I
+Else:7→I:End
+End
+Z→L₂(8)

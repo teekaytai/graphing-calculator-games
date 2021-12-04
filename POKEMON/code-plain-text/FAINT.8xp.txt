@@ -1,0 +1,15 @@
+F→⌊FAINT(dim(⌊FAINT)+1)
+If L₁(1)=F:Then
+10→L₁(12)
+Else
+10→L₂(12)
+End
+If F=1:Then
+Output(8,1,Str1+" FAINTED!")
+Else
+Output(8,1,Str2+" FAINTED!")
+End
+Wait 1
+Output(F,1,"                          ")
+Pause 
+Output(8,1,"                    ")
